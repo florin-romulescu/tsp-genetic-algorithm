@@ -1,0 +1,29 @@
+{
+    "nodes": [
+      {"id": 1, "name": "A", "x": 0, "y": 0},
+      {"id": 2, "name": "B", "x": 1, "y": 1},
+      {"id": 3, "name": "C", "x": 2, "y": 0},
+      {"id": 4, "name": "D", "x": 3, "y": 1},
+      {"id": 5, "name": "E", "x": 4, "y": 0},
+      {"id": 6, "name": "F", "x": 2, "y": 2},
+      {"id": 7, "name": "G", "x": 0, "y": 3}
+    ],
+    "edges": [
+      {"node1": 1, "node2": 2, "distance": 2},
+      {"node1": 1, "node2": 3, "distance": 9},
+      {"node1": 1, "node2": 4, "distance": 10},
+      {"node1": 1, "node2": 5, "distance": 7},
+      {"node1": 2, "node2": 3, "distance": 6},
+      {"node1": 2, "node2": 4, "distance": 4},
+      {"node1": 2, "node2": 5, "distance": 3},
+      {"node1": 3, "node2": 4, "distance": 8},
+      {"node1": 3, "node2": 5, "distance": 5},
+      {"node1": 4, "node2": 5, "distance": 1},
+      {"node1": 6, "node2": 7, "distance": 3},
+      {"node1": 6, "node2": 2, "distance": 10},
+      {"node1": 7, "node2": 1, "distance": 7},
+      {"node1": 6, "node2": 5, "distance": 5},
+      {"node1": 7, "node2": 2, "distance": 14}
+    ]
+  }
+  
