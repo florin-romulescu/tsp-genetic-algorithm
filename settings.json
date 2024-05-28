@@ -12,7 +12,6 @@
       {"node1": 1, "node2": 2, "distance": 2},
       {"node1": 1, "node2": 3, "distance": 9},
       {"node1": 1, "node2": 4, "distance": 10},
-      {"node1": 1, "node2": 5, "distance": 7},
       {"node1": 2, "node2": 3, "distance": 6},
       {"node1": 2, "node2": 4, "distance": 4},
       {"node1": 2, "node2": 5, "distance": 3},
@@ -22,7 +21,7 @@
       {"node1": 6, "node2": 7, "distance": 3},
       {"node1": 6, "node2": 2, "distance": 10},
       {"node1": 7, "node2": 1, "distance": 7},
-      {"node1": 6, "node2": 5, "distance": 5},
+      {"node1": 6, "node2": 4, "distance": 5},
       {"node1": 7, "node2": 2, "distance": 14}
     ]
   }
