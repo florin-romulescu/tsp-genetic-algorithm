@@ -62,3 +62,16 @@ class Graph:
         
         reverse_edge = Edge(edge.node2, edge.node1, edge.cost)
         self.edges[reverse_edge.node1.id].append(reverse_edge)
+    
+    def get_neighbours(self, node_id:int):
+        return [edge.node2 for edge in self.edges[node_id]]
+
+    def is_edge_between(self, node1_id:int, node2_id:int) -> bool:
+        return node2_id in self.get_neighbours(node1_id)
+    
+    def get_edge_cost(self, node1_id:int, node2_id:int) -> Number:
+        for edge in self.edges[node1_id]:
+            if edge.node2.id == node2_id:
+                return edge.cost
+            
+        return float('inf')
