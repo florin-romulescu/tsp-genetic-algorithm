@@ -18,8 +18,8 @@ This project implements a Genetic Algorithm (GA) to solve the Traveling Salesman
 ### Instalation
 1. Clone the repository:
  ```bash
- git clone ...
- cd ...
+ git clone https://github.com/florin-romulescu/tsp-genetic-algorithm
+ cd tsp-genetic-algorithm
  ```
 
  2. Install the required packages:
