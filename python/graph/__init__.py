@@ -42,7 +42,7 @@ class Graph:
             node.id : node
             for node in nodes
         }
-        self.edges = {
+        self.edges:dict[int, list[Edge]] = {
             node_id : []
             for node_id in self.nodes
         }
