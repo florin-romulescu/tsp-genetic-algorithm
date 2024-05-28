@@ -1,7 +1,13 @@
 import json
 from graph import Node, Edge, Graph
-from graph.repr import display
+from graph.algorithms import construct_distance_matrix
 from collections.abc import Hashable
+from tsp import genetic_algorithm
+from functools import partial
+import sys
+import numpy as np
+
+sys.path.append(".")
 
 Number = float | int
 
@@ -39,9 +45,18 @@ def main() -> None:
     nodes = convert_to_node(graph_repr["nodes"])
     edges = convert_to_edge(graph_repr["edges"], nodes)
     graph = Graph(nodes=nodes, edges=edges)
-    print(graph.nodes)
-    print(graph.edges)
-    display(graph)
+    dist_matrix = construct_distance_matrix(graph)
+    solution, fitness = genetic_algorithm(
+        dist_matrix,
+        no_of_generations=1000,
+        tournament_size=5,
+        mutation_rate=0.2,
+        no_of_individuals=300
+        )
+    
+    print("Solution:", solution)
+    print("Fitness:", fitness)
+    
     return
 
 if __name__ == '__main__':
