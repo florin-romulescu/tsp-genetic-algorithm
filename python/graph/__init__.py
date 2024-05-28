@@ -50,6 +50,8 @@ class Graph:
         if edges is not None:
             for edge in edges:
                 self.edges[edge.node1.id].append(edge)
+                reversed_edge = Edge(edge.node2, edge.node1, edge.cost)
+                self.edges[edge.node2.id].append(reversed_edge)
         
     def add_node(self, node:Node):
         self.nodes[node.id] = node
