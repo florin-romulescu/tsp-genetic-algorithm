@@ -22,9 +22,10 @@ This project implements a Genetic Algorithm (GA) to solve the Traveling Salesman
  cd tsp-genetic-algorithm
  ```
 
- 2. Install the required packages:
+ 2. Build and run docker image :
  ```bash
- pip install numpy
+    docker build -t tsp-genetic-algorithm .
+    docker run --rm tsp-genetic-algorithm
  ```
 
  ### Usage:
