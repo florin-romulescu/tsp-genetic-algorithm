@@ -3,9 +3,12 @@ This module contains the logic for solving the tsp through
 a genetic algorithm.
 """
 
-from graph import Edge, Graph, Node
+from multiprocessing import Pool
+from functools import partial
 import numpy as np
 import random
+
+Number = float | int
 
 def generate_initial_population(dist_matrix, no_of_individuals: int = 50):
     individuals = []
@@ -16,10 +19,10 @@ def generate_initial_population(dist_matrix, no_of_individuals: int = 50):
         np.random.shuffle(individual)
         individuals.append(individual)
         
-    return np.array(individuals)
+    return np.array(individuals).tolist()
 
 def fitness(chromozome: np.array, dist_matrix: np.array):
-    cost = 0
+    cost:Number = 0
     for node, next_node in zip(chromozome[1:], chromozome[:-1]):
         cost += dist_matrix[node][next_node]
     cost += dist_matrix[chromozome[-1]][chromozome[0]]
@@ -64,20 +67,27 @@ def genetic_algorithm(dist_matrix,
                       no_of_individuals:int=50,
                       no_of_generations:int=100,
                       tournament_size:int=3,
-                      mutation_rate:float=0.1):
+                      mutation_rate:float=0.1,
+                      no_of_processes:int=4):
     population = generate_initial_population(dist_matrix, no_of_individuals)
     best_solution = None
     best_fitness = float('inf')
     
+    partial_fitness = partial(fitness, dist_matrix=dist_matrix)
+    partial_tournament = partial(tournament_selection, tournament_size=tournament_size)
+    
     for _ in range(no_of_generations):
-        fitnesses = [fitness(ind, dist_matrix) for ind in population]
+        with Pool(no_of_processes) as p:
+            fitnesses = p.map(partial_fitness, population)
         
         for ind, fit in zip(population, fitnesses):
             if fit < best_fitness:
                 best_solution = ind
                 best_fitness = fit
-                
-        selected_parents = tournament_selection(population, fitnesses, tournament_size)
+        
+        print(list(zip(population, fitnesses)))
+        with Pool(no_of_processes) as p:
+            selected_parents = p.starmap(partial_tournament, zip(population, fitnesses))
         
         offspring = []
         for i in range(0, len(selected_parents), 2):

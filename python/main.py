@@ -51,7 +51,8 @@ def main() -> None:
         no_of_generations=1000,
         tournament_size=5,
         mutation_rate=0.2,
-        no_of_individuals=300
+        no_of_individuals=300,
+        no_of_processes=8
         )
     
     print("Solution:", solution)
